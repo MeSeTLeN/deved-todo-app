@@ -1,18 +1,26 @@
 import React from "react";
 
-export default function Form() {
+export default function Form({ inputText, setInputText, todos, setTodos }) {
   const inputTextHandler = (event) => {
-    console.log(event);
+    setInputText(event.target.value);
   };
+
+  function submitTodoHandler(event) {
+    event.preventDefault();
+
+    if (inputText.trim()) {
+      setTodos([
+        ...todos,
+        { id: Date.now(), completed: false, title: inputText },
+      ]);
+      setInputText("");
+    }
+  }
 
   return (
     <form>
-      <input
-        onChange={(event)=>inputTextHandler(event.target.value)}
-        type="text"
-        className="todo-input"
-      />
-      <button className="todo-button" type="submit">
+      <input onChange={inputTextHandler} type="text" className="todo-input" />
+      <button onClick={submitTodoHandler} className="todo-button" type="submit">
         <i className="fas fa-plus-square"></i>
       </button>
       <div className="select">
@@ -21,6 +29,9 @@ export default function Form() {
           <option value="completed">Completed</option>
           <option value="uncompleted">Uncompleted</option>
         </select>
+      </div>
+      <div className="todo-continer">
+        <ul className="todo-list"></ul>
       </div>
     </form>
   );
