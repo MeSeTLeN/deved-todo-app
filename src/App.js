@@ -10,6 +10,10 @@ function App() {
   const [selectedTodos, setSelectedTodos] = useState([]);
 
   useEffect(() => {
+    getLocalTodos();
+  }, []);
+
+  useEffect(() => {
     function selectedTodosHandler() {
       switch (status) {
         case "completed":
@@ -27,7 +31,21 @@ function App() {
     }
 
     selectedTodosHandler();
+    saveLocalTodos();
   }, [todos, status]);
+
+  function saveLocalTodos() {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }
+
+  function getLocalTodos() {
+    if (localStorage.getItem("todos") === null) {
+      localStorage.setItem("todos", JSON.stringify([]));
+    } else {
+      let todosLocal = JSON.parse(localStorage.getItem("todos"));
+      setTodos(todosLocal);
+    }
+  }
 
   return (
     <div className="App">
