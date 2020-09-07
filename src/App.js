@@ -50,9 +50,8 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>Ed's Todo List</h1>
+        <h1>New Todo App</h1>
       </header>
-      <button onClick={() => console.log(selectedTodos)}>selectedTodos</button>
       <Form
         inputText={inputText}
         setInputText={setInputText}
