@@ -19,7 +19,12 @@ export default function Form({ inputText, setInputText, todos, setTodos }) {
 
   return (
     <form>
-      <input onChange={inputTextHandler} type="text" className="todo-input" />
+      <input
+        value={inputText}
+        onChange={inputTextHandler}
+        type="text"
+        className="todo-input"
+      />
       <button onClick={submitTodoHandler} className="todo-button" type="submit">
         <i className="fas fa-plus-square"></i>
       </button>

@@ -14,12 +14,12 @@ function App() {
       </header>
       <button onClick={() => console.log(inputText)}>inputTextConsole</button>
       <Form
+        inputText={inputText}
+        setInputText={setInputText}
         todos={todos}
         setTodos={setTodos}
-        setInputText={setInputText}
-        inputText={inputText}
       />
-      <TodoList todos={todos} />
+      <TodoList todos={todos} setTodos={setTodos} />
     </div>
   );
 }
