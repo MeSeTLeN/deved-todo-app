@@ -1,7 +1,14 @@
 import React from "react";
 
-export default function Form({ inputText, setInputText, todos, setTodos }) {
-  const inputTextHandler = (event) => {
+export default function Form({
+  inputText,
+  setInputText,
+  todos,
+  setTodos,
+  status,
+  setStatus,
+}) {
+  const onChangeTitleHandler = (event) => {
     setInputText(event.target.value);
   };
 
@@ -17,11 +24,15 @@ export default function Form({ inputText, setInputText, todos, setTodos }) {
     }
   }
 
+  function selectTodoHandler(event) {
+    setStatus(event.target.value);
+  }
+
   return (
     <form>
       <input
         value={inputText}
-        onChange={inputTextHandler}
+        onChange={onChangeTitleHandler}
         type="text"
         className="todo-input"
       />
@@ -29,7 +40,11 @@ export default function Form({ inputText, setInputText, todos, setTodos }) {
         <i className="fas fa-plus-square"></i>
       </button>
       <div className="select">
-        <select name="todos" className="filter-todo">
+        <select
+          onChange={selectTodoHandler}
+          name="todos"
+          className="filter-todo"
+        >
           <option value="all">All</option>
           <option value="completed">Completed</option>
           <option value="uncompleted">Uncompleted</option>
@@ -41,5 +56,3 @@ export default function Form({ inputText, setInputText, todos, setTodos }) {
     </form>
   );
 }
-// onClick={()=>}
-// onChange={()=>}
