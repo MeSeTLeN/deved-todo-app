@@ -10,24 +10,24 @@ function App() {
   const [selectedTodos, setSelectedTodos] = useState([]);
 
   useEffect(() => {
+    function selectedTodosHandler() {
+      switch (status) {
+        case "completed":
+          setSelectedTodos(todos.filter((el) => el.completed === true));
+          break;
+
+        case "uncompleted":
+          setSelectedTodos(todos.filter((el) => el.completed === false));
+          break;
+
+        default:
+          setSelectedTodos(todos);
+          break;
+      }
+    }
+
     selectedTodosHandler();
   }, [todos, status]);
-
-  function selectedTodosHandler() {
-    switch (status) {
-      case "completed":
-        setSelectedTodos(todos.filter((el) => el.completed === true));
-        break;
-
-      case "uncompleted":
-        setSelectedTodos(todos.filter((el) => el.completed === false));
-        break;
-
-      default:
-        setSelectedTodos(todos);
-        break;
-    }
-  }
 
   return (
     <div className="App">
