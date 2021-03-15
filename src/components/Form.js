@@ -17,5 +17,3 @@ export default function Form() {
     </form>
   );
 }
-// onClick={()=>}
-// onChange={()=>}
