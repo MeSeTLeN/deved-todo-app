@@ -17,7 +17,9 @@ export default function Todo({ todo, todos, setTodos }) {
 
   return (
     <div className="todo">
-      <li className="todo-item">{todo.text}</li>
+      <li className={`todo-item ${todo.completed ? "completed" : null}`}>
+        {todo.text}
+      </li>
       <button onClick={completeTodoHandler} className="complete-btn">
         <i className="fas fa-check"></i>
       </button>
